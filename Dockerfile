@@ -79,9 +79,9 @@ RUN sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo 
 RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
 
-RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install;cd ~/workspace/; "
+#RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install;"
+RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel;cd ~/workspace/ "
 
-#RUN /bin/bash -c "source ~/.bashrc ;cd ~/workspace; apt-get install ros-kinetic-ompl;git clone https://github.com/tjdalsckd/gpu_voxel_panda_sim; cd gpu_voxel_panda_sim; cmake . -D icl_core_DIR=/root/workspace/gpu-voxels/build/packages/icl_core/ -D gpu_voxels_DIR=/root/workspace/gpu-voxels/build/packages/gpu_voxels; make -j16; "
 RUN apt-get install -y ros-kinetic-libfranka
 RUN apt-get install  -y gedit
 
@@ -89,7 +89,14 @@ RUN apt-get install  -y gedit
 #RUN /bin/bash -c "cd ~/workspace/gpu_voxel_panda_sim; cp ../ros_trajectory_subscriber/examples_common.* .;"
 RUN /bin/bash -c "cd /usr/include; ln -s eigen3/Eigen Eigen;"
 RUN /bin/bash -c "cd ~;cd ~/workspace/; git clone https://github.com/tjdalsckd/ros_trajectory_subscriber.git;cd ~/workspace/"
-RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel;cd ~"
+
+RUN /bin/bash -c "cd ~;cd ~/workspace/; git clone https://github.com/tjdalsckd/gpu_voxel_start_guide.git;cd ~/workspace/"
+
+RUN cd ~/workspace
+RUN echo 'cd /root/workspace' >> ~/.bashrc
+RUN /bin/bash -c "source ~/.bashrc;"
+
+RUN /bin/bash -c "cd /root/workspace; git clone https://github.com/tjdalsckd/panda_sim_joint_trajectory;"
 EXPOSE 80
 EXPOSE 443
 
