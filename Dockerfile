@@ -97,6 +97,9 @@ RUN echo 'cd /root/workspace' >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc;"
 
 RUN /bin/bash -c "cd /root/workspace; git clone https://github.com/tjdalsckd/panda_sim_joint_trajectory;"
+RUN apt-get install -y python-pip
+RUN /bin/bash -c "/opt/conda/envs/ros/bin/pip install -U numpy ;/opt/conda/envs/ros/bin/pip  install pybullet"
+
 EXPOSE 80
 EXPOSE 443
 
