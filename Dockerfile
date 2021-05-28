@@ -80,7 +80,7 @@ RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
 
 #RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install;"
-RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel;cd ~/workspace/ "
+RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel ;cd ~/workspace/ ;"
 
 RUN apt-get install -y ros-kinetic-libfranka
 RUN apt-get install  -y gedit
@@ -94,12 +94,13 @@ RUN /bin/bash -c "cd ~;cd ~/workspace/; git clone https://github.com/tjdalsckd/g
 
 RUN cd ~/workspace
 RUN echo 'cd /root/workspace' >> ~/.bashrc
+
 RUN /bin/bash -c "source ~/.bashrc;"
 
 RUN /bin/bash -c "cd /root/workspace; git clone https://github.com/tjdalsckd/panda_sim_joint_trajectory;"
 RUN apt-get install -y python-pip
 RUN /bin/bash -c "/opt/conda/envs/ros/bin/pip install -U numpy ;/opt/conda/envs/ros/bin/pip  install pybullet"
-
+RUN /bin/bash -c "cd /root/workspace; ln -s /root/workspace/gpu-voxels/build/bin/gpu_voxels_visualizer gpu_voxels_visualizer"
 EXPOSE 80
 EXPOSE 443
 
