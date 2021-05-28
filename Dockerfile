@@ -61,7 +61,7 @@ RUN /bin/bash -c "cd ~/libraries;sudo apt-get install -y libeigen3-dev;apt-get i
 RUN apt-get install -y ros-kinetic-moveit*
 RUN apt-get install -y ros-kinetic-ompl
 RUN apt-get install -y ros-kinetic-realsense2-camera
-RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;source ~/anaconda3/etc/profile.d/conda.sh;conda activate ros;source ~/.bashrc; pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
+RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh; conda create -n ros python=2;source ~/anaconda3/etc/profile.d/conda.sh;conda activate ros;source ~/.bashrc; pip install -U pip;pip install -U rosdep; cd ~; mkdir workspace; cd workspace;git clone https://github.com/tjdalsckd/-TemplateVoxelMap.hpp- TemplateVoxelMap; apt-get install cmake-qt-gui;apt-get install libglew-dev;apt-get install libglm-dev;sudo apt-get install qt5-default;git clone https://github.com/fzi-forschungszentrum-informatik/gpu-voxels.git;cd gpu-voxels/; cp /root/workspace/TemplateVoxelMap/TemplateVoxelMap.hpp /root/workspace/gpu-voxels/packages/gpu_voxels/src/gpu_voxels/voxelmap/;mkdir build;cd build/;cmake .. -D ENABLE_CUDA=True;make -j16; make install;"
 RUN /bin/bash -c "export GPU_VOXELS_MODEL_PATH=~/workspace/gpu-voxels/packages/gpu_voxels/models/";
 #RUN /bin/bash -c "source ~/.bashrc;apt-get install -y python-pip; pip install -U pip ;pip install typing;pip install pybullet==3.0.8; pip install -U pip; pip install -U numpy;"
 
@@ -80,7 +80,7 @@ RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y librealsense2-dkms librealsense2-utils librealsense2-dev librealsense2-dbg
 
 #RUN /bin/bash -c "cd ~/libraries;git clone https://github.com/IntelRealSense/librealsense.git;cd librealsense; mkdir build; cd build; cmake ..; make -j16; make install;"
-RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel ;cd ~/workspace/ ;"
+RUN /bin/bash -c "cd ~/workspace/; git clone https://github.com/tjdalsckd/libfranka_gpu_voxel ;cd ~/workspace/; "
 
 RUN apt-get install -y ros-kinetic-libfranka
 RUN apt-get install  -y gedit
