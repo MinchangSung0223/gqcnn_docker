@@ -1,4 +1,4 @@
-# gpu_voxel_docker
+# gqcnn_docker
 
 
 ```bash
@@ -15,4 +15,6 @@ bash multi_terminal.sh
 ```
 
 
-# gqcnn_docker
+도커 내부에서 
+cd /root/gqcnn_smc 
+python3 realsense_gqcnn.py
