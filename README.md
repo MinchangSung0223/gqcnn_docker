@@ -16,5 +16,7 @@ bash multi_terminal.sh
 
 
 도커 내부에서 
+```bash
 cd /root/gqcnn_smc 
 python3 realsense_gqcnn.py
+```
