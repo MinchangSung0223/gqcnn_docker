@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t tjdalsckd/gpu_voxels:latest .
+docker build -t tjdalsckd/gqcnn_smc:latest .
